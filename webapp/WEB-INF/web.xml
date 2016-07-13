@@ -5,7 +5,6 @@
 			http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
 			id="WebApp_ID" version="3.0">
 	
-	<display-name>sermo</display-name>
 	<!-- spring -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -47,4 +46,7 @@
 		<servlet-name>DispatcherServlet</servlet-name>
 	</filter-mapping>
 	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 </web-app>
