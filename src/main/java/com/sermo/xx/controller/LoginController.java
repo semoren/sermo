@@ -30,6 +30,13 @@ public class LoginController {
 		return "login/login";
 	}
 	
+	/**
+	 * 登陆
+	 * @param email
+	 * @param password
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(String email, String password, HttpSession session) {
 		boolean flag = service.login(email, password);
@@ -43,12 +50,19 @@ public class LoginController {
 		}
 	}
 	
+	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String toRegister(ModelMap map) {
 		map.put("title", "注册"); // 设置页面title
 		return "login/registration";
 	}
 	
+	
+	/**
+	 * 注册用户
+	 * @param info
+	 * @return
+	 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(UserInfo info) {
 		boolean flag = service.register(info);
@@ -58,12 +72,25 @@ public class LoginController {
 		return null;
 	}
 	
+	
+	/**
+	 * 退出
+	 * @param email
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/log_out")
+	public String logOut(String email, HttpSession session) {
+		session.removeAttribute("userId");
+		return "redirect:/login";
+	}
+	
 	/**
 	 * 首页
 	 * @return
 	 */
 	@RequestMapping(value="/confirmLogin")
 	public String home() {
-		return "leftmenu";
+		return "index";
 	}
 }

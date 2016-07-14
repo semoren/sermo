@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="head :: header">
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <div class="left-side sticky-left-side" th:include="leftmenu :: leftmenu"></div>
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <div class="header-section" th:include="header-section :: section"></div>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">UI Elements</a>
+                </li>
+                <li class="active"> Panels </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            Body Content goes here
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer class="sticky-footer" th:include="footer :: copy">
+          
+        </footer>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="resources/js/jquery-1.10.2.min.js" th:src="@{resources/js/jquery-1.10.2.min.js}"></script>
+<script src="resources/js/jquery-ui-1.9.2.custom.min.js" th:src="@{resources/js/jquery-ui-1.9.2.custom.min.js}"></script>
+<script src="resources/js/jquery-migrate-1.2.1.min.js" th:src="@{resources/js/jquery-migrate-1.2.1.min.js}"></script>
+<script src="resources/js/bootstrap.min.js" th:src="@{resources/js/bootstrap.min.js}"></script>
+<script src="resources/js/modernizr.min.js" th:src="@{resources/js/modernizr.min.js}"></script>
+<script src="resources/js/jquery.nicescroll.js" th:src="@{resources/js/jquery.nicescroll.js}"></script>
+
+<!--common scripts for all pages-->
+<script src="resources/js/scripts.js" th:src="@{resources/js/scripts.js}"></script>
+
+</body>
+</html>
