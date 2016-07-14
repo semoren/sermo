@@ -2,6 +2,7 @@ package com.sermo.xx.test;
 
 import javax.annotation.Resource;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,11 +26,19 @@ public class LoginTest extends AbstractJUnit4SpringContextTests{
 	private UserInfoDao dao;
 	
 	@Test
-	public void ss(){
+	public void register(){
 		UserInfo info = new UserInfo();
 		info.setEmail("admin@qq.com");
 		info.setPassword(MD5Util.encrypt("admin"));
 		info.setName("管理员");
 		dao.register(info);
+	}
+	
+	@Test
+	public void login(){
+		String email = "admin@qq.com";
+		String password = "admin";
+		UserInfo info = dao.getUser(email);
+		Assert.assertTrue(MD5Util.encrypt(password).equals(info.getPassword()));
 	}
 }

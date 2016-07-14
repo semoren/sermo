@@ -1,10 +1,12 @@
 package com.sermo.xx.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,18 +24,46 @@ public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping(value="/login", method={RequestMethod.POST, RequestMethod.GET})
-	public void login(UserInfo info) {
-		boolean flag = service.login(info);
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String toLogin(ModelMap map) {
+		map.put("title", "登陆"); // 设置页面title
+		return "login/login";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(String email, String password, HttpSession session) {
+		boolean flag = service.login(email, password);
 		if (flag) {
-			logger.debug("登陆成功");
+			session.setAttribute("userId", email);
+			logger.debug("{} login success", email);
+			return "redirect:/confirmLogin";
 		}else {
-			logger.debug("登陆失败");
+			logger.debug("{} login fail", email);
+			return "login/login";
 		}
 	}
 	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String toRegister(ModelMap map) {
+		map.put("title", "注册"); // 设置页面title
+		return "login/registration";
+	}
+	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public void register(UserInfo info) {
-		service.register(info);
+	public String register(UserInfo info) {
+		boolean flag = service.register(info);
+		if (flag) {
+			return "redirect:/login";
+		}
+		return null;
+	}
+	
+	/**
+	 * 首页
+	 * @return
+	 */
+	@RequestMapping(value="/confirmLogin")
+	public String home() {
+		return "leftmenu";
 	}
 }

@@ -20,9 +20,9 @@ public class UserInfoServiceImpl implements UserInfoService{
 	private @Resource UserInfoDao dao;
 	
 	@Override
-	public boolean login(UserInfo info) {
-		UserInfo userInfo = dao.getUser(info.getEmail());
-		String password = MD5Util.encrypt(info.getPassword());
+	public boolean login(String email, String pwd) {
+		UserInfo userInfo = dao.getUser(email);
+		String password = MD5Util.encrypt(pwd);
 		return password.equals(userInfo.getPassword()) ? true : false;
 	}
 

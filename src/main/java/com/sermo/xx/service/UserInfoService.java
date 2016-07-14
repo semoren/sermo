@@ -14,7 +14,7 @@ public interface UserInfoService {
 	 * @param info
 	 * @return
 	 */
-	boolean login(UserInfo info);
+	boolean login(String email, String password);
 	
 	/**
 	 * 注册
