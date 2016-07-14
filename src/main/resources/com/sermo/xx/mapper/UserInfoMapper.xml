@@ -36,6 +36,18 @@
     where email = #{email,jdbcType=VARCHAR}
   </select>
   
+  <insert id="addTrainRecordBatch" parameterType="java.util.List">
+  <![CDATA[ 
+  	 	insert into user_info (id, email, name, 
+      password, createTime, state) 
+      values
+      <foreach collection="list" item="item" index="index" separator="," >
+      		(#{item.id}, #{item.email}, #{item.name}, #{item.password}, #{item.createTime}, #{item.state})
+      </foreach>
+      ]]>
+  </insert>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

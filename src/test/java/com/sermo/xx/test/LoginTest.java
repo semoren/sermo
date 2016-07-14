@@ -41,4 +41,16 @@ public class LoginTest extends AbstractJUnit4SpringContextTests{
 		UserInfo info = dao.getUser(email);
 		Assert.assertTrue(MD5Util.encrypt(password).equals(info.getPassword()));
 	}
+	
+	@Test
+	public void insertData() {
+		UserInfo info = null;
+		for (int i = 1; i < 58; i++) {
+			info = new UserInfo();
+			info.setEmail("admin-"+i+"-@qq.com");
+			info.setPassword(MD5Util.encrypt("admin"));
+			info.setName("管理员-" + i);
+			dao.register(info);
+		}
+	}
 }

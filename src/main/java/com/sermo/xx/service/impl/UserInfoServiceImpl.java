@@ -1,5 +1,7 @@
 package com.sermo.xx.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -31,6 +33,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		String password = MD5Util.encrypt(info.getPassword());
 		info.setPassword(password);
 		return dao.register(info);
+	}
+
+	@Override
+	public List<UserInfo> list() {
+		return dao.list();
 	}
 
 }

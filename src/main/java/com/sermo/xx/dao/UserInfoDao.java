@@ -19,4 +19,6 @@ public interface UserInfoDao {
 	List<UserInfo> list();
 	
 	UserInfo getUser(String email);
+	
+	void insertList(List<UserInfo> list);
 }

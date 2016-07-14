@@ -12,6 +12,8 @@ public interface UserInfoMapper {
 	
 	UserInfo selectByEmail(String email);
 	
+	void addTrainRecordBatch(List<UserInfo> list);
+	
 	int deleteByPrimaryKey(String id);
 
     int insertSelective(UserInfo record);

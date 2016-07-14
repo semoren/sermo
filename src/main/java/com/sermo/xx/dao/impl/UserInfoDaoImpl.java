@@ -35,4 +35,9 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		return mapper.selectByEmail(email);
 	}
 
+	@Override
+	public void insertList(List<UserInfo> list) {
+		mapper.addTrainRecordBatch(list);
+	}
+
 }

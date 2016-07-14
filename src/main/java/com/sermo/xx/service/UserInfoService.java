@@ -1,5 +1,7 @@
 package com.sermo.xx.service;
 
+import java.util.List;
+
 import com.sermo.xx.model.UserInfo;
 
 /**
@@ -22,4 +24,9 @@ public interface UserInfoService {
 	 */
 	boolean register(UserInfo info);
 	
+	/**
+	 * 用户列表
+	 * @return
+	 */
+	List<UserInfo> list();
 }
