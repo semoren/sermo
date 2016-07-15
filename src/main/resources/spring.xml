@@ -41,10 +41,30 @@
 		
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean></bean>
+			<bean class="com.sermo.xx.interceptor.LoginInterceptor">
+				<property name="excludeSuffixs">
+					<list>
+						<value>.html</value>
+						<value>.js</value>
+						<value>.css</value>
+						<value>.png</value>
+						<value>.gif</value>
+						<value>.eot</value>
+						<value>.svg</value>
+						<value>.ttf</value>
+						<value>.woff</value>
+						<value>.woff2</value>
+						<value>.ico</value>
+						<value>.icon</value>
+						<value>.jpg</value>
+						<value>/login</value>
+						<value>/register</value>
+					</list>
+				</property>
+			</bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 </beans>

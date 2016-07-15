@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="head :: header">
+<head th:include="head :: header" th:with="title='登陆'">
 </head>
 
 <body class="login-body">
@@ -23,9 +23,9 @@
             <div class="registration">
                 <a class="" href="register">注册</a>
             </div>
-            <label class="checkbox">
+            <!-- <label class="checkbox">
                 <input type="checkbox" value="remember-me"/> 记住我
-            </label>
+            </label> -->
 
         </div>
 

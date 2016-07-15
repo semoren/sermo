@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sermo.xx.constant.Globals;
 import com.sermo.xx.model.UserInfo;
 import com.sermo.xx.service.UserInfoService;
 
@@ -26,7 +27,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String toLogin(ModelMap map) {
-		map.put("title", "登陆"); // 设置页面title
 		return "login/login";
 	}
 	
@@ -41,9 +41,9 @@ public class LoginController {
 	public String login(String email, String password, HttpSession session) {
 		boolean flag = service.login(email, password);
 		if (flag) {
-			session.setAttribute("userId", email);
+			session.setAttribute(Globals.USER_SESSION, email);
 			logger.debug("{} login success", email);
-			return "redirect:/confirmLogin";
+			return "index";
 		}else {
 			logger.debug("{} login fail", email);
 			return "login/login";
@@ -79,18 +79,9 @@ public class LoginController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value="/log_out")
+	@RequestMapping(value="/logout")
 	public String logOut(String email, HttpSession session) {
-		session.removeAttribute("userId");
+		session.removeAttribute(Globals.USER_SESSION);
 		return "redirect:/login";
-	}
-	
-	/**
-	 * 首页
-	 * @return
-	 */
-	@RequestMapping(value="/confirmLogin")
-	public String home() {
-		return "index";
 	}
 }
