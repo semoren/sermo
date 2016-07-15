@@ -13,32 +13,8 @@ function fnFormatDetails ( oTable, nTr )
 $(document).ready(function() {
 
     $('#dynamic-table').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
+        "aaSorting": [[ 1, "desc" ]] // 排序 0-开始
     } );
 
-    /*
-     * Insert a 'details' column to the table
-     */
-    var nCloneTh = document.createElement( 'th' );
-    var nCloneTd = document.createElement( 'td' );
-    nCloneTd.className = "center";
-
-    $('#hidden-table-info thead tr').each( function () {
-        this.insertBefore( nCloneTh, this.childNodes[0] );
-    } );
-
-    $('#hidden-table-info tbody tr').each( function () {
-        this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
-    } );
-
-    /*
-     * Initialse DataTables, with no sorting on the 'details' column
-     */
-    var oTable = $('#hidden-table-info').dataTable( {
-        "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] }
-        ],
-        "aaSorting": [[1, 'asc']]
-    });
 
 } );

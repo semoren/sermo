@@ -3,7 +3,7 @@ $.extend( true, $.fn.dataTable.defaults, {
 	"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
 	"sPaginationType": "bootstrap",
 	"oLanguage": {
-		"sLengthMenu": "_MENU_ records per page"
+		"sLengthMenu": "_MENU_ 每页行数"
 	}
 } );
 
@@ -43,8 +43,8 @@ $.extend( $.fn.dataTableExt.oPagination, {
 
 			$(nPaging).addClass('pagination').append(
 				'<ul>'+
-					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-					'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
+					'<li class="prev disabled"><a href="#">上一页</a></li>'+
+					'<li class="next disabled"><a href="#">下一页 </a></li>'+
 				'</ul>'
 			);
 			var els = $('a', nPaging);

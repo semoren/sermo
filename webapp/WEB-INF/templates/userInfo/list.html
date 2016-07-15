@@ -48,6 +48,7 @@
             <th class="hidden-phone">id</th> <!-- 不在手机端显示 -->
             <th>用户名</th>
             <th>邮箱</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -55,6 +56,10 @@
             <td th:text="${userInfo.id}">123</td>
             <td th:text="${userInfo.name}">admin</td>
             <td th:text="${userInfo.email}">admin@gamil.com</td>
+            <td>
+            	<button class="btn btn-default" type="button"><i class="fa fa-trash-o"></i> 编辑</button>
+            	<button class="btn btn-default" type="button"><i class="fa fa-trash-o"></i> 删除</button>
+            </td>
         </tr>
         </tbody>
         </table>
