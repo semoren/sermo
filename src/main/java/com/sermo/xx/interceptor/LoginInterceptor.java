@@ -2,6 +2,7 @@ package com.sermo.xx.interceptor;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.sermo.components.taglib.model.Menus;
+import com.sermo.components.taglib.template.MenuTemplator;
 import com.sermo.xx.constant.Globals;
 
 /**
@@ -20,6 +23,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 	private final Logger log = LoggerFactory.getLogger(LoginInterceptor.class); 
 	
+	private @Resource MenuTemplator templator;
+	
 	private List<String> excludeSuffixs;
 	
 	@Override
@@ -29,6 +34,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	    String contextPath = request.getContextPath();
 	    String url = requestUri.substring(contextPath.length());
 		if (isExcludeRequest(url)) {
+			List<Menus> menus = templator.process(url);
+			request.setAttribute("menus", menus);
 			return true;
 		}else {
 			Object object = request.getSession().getAttribute(Globals.USER_SESSION);
@@ -36,6 +43,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				log.info("Interceptor：跳转到login页面！");
 				response.sendRedirect("/sermo/login");
 			}else {
+				List<Menus> menus = templator.process(url);
+				request.setAttribute("menus", menus);
 				return true;
 			}
 		}

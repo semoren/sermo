@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+	<group name="系统管理1" class="fa fa-laptop">
+		<menu url="/userInfo/list" name="用户列表"></menu>
+		<menu url="/userInfo/list1" name="Boxed Page"></menu>
+		<menu url="/userInfo/list2" disabled="true"></menu>
+	</group>
+	<group name="系统管理2" class="fa fa-book">
+		<menu url="/userInfo/list3" name="General"></menu>
+		<menu url="/userInfo/list4" name="Buttons"></menu>
+	</group>
+</menus>

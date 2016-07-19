@@ -185,6 +185,13 @@
             <groupId>commons-codec</groupId>  
             <artifactId>commons-codec</artifactId>  
             <version>1.9</version>  
+        </dependency>
+        
+        <!-- 菜单 -->
+        <dependency>
+        	<groupId>com.sermo</groupId>
+			<artifactId>sermo_taglib</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
         </dependency>  
 	</dependencies>
 </project>

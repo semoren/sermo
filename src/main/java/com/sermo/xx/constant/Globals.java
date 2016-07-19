@@ -6,6 +6,9 @@ package com.sermo.xx.constant;
  */
 public final class Globals {
 	
+	/**
+	 * 登陆Session
+	 */
 	public static String USER_SESSION = "USER_SESSION"; 
 	
 }

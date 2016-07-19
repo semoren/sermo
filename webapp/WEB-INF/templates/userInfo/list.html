@@ -29,53 +29,60 @@
         <!-- page heading end-->
 
         <!--body wrapper start-->
-        <div class="wrapper">
-            <div class="row">
-        <div class="col-sm-12">
-        <section class="panel">
-        <div class="panel-body">
-        <div class="adv-table">
-        <div class="clearfix">
-            <div class="btn-group">
-                <button id="editable-sample_new" class="btn btn-primary">
-                    	新增用户 <i class="fa fa-plus"></i>
-                </button>
-            </div>
-        </div>
-        <table  class="display table table-bordered table-striped" id="dynamic-table">
-        <thead>
-        <tr>
-            <th class="hidden-phone">id</th> <!-- 不在手机端显示 -->
-            <th>用户名</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="gradeA" th:each="userInfo:${userInfos}">
-            <td th:text="${userInfo.id}">123</td>
-            <td th:text="${userInfo.name}">admin</td>
-            <td th:text="${userInfo.email}">admin@gamil.com</td>
-            <td class="center">
-            	<button class="btn btn-info" type="button"><i class="fa fa-pencil"></i> 编辑</button>
-            	<button class="btn btn-danger" type="button"><i class="fa fa-trash-o"></i> 删除</button>
-            	<button class="btn btn-success" type="button"><i class="fa fa-eye"></i> 详情</button>
-            </td>
-        </tr>
-        </tbody>
-        </table>
-        </div>
-        </div>
-        </section>
-        </div>
-        </div>
-        
-        </div>
-        <!--body wrapper end-->
+			<div class="wrapper">
+				<div class="row">
+					<div class="col-sm-12">
+						<section class="panel">
+							<div class="panel-body">
+								<div class="adv-table">
+									<div class="clearfix">
+										<div class="btn-group">
+											<button id="editable-sample_new" class="btn btn-primary">
+												新增用户 <i class="fa fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<table class="display table table-bordered table-striped"
+										id="dynamic-table">
+										<thead>
+											<tr>
+												<th class="hidden-phone">id</th>
+												<!-- 不在手机端显示 -->
+												<th>用户名</th>
+												<th>邮箱</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="gradeA" th:each="userInfo:${userInfos}">
+												<td th:text="${userInfo.id}">123</td>
+												<td th:text="${userInfo.name}">admin</td>
+												<td th:text="${userInfo.email}">admin@gamil.com</td>
+												<td class="center">
+													<button class="btn btn-info" type="button">
+														<i class="fa fa-pencil"></i> 编辑
+													</button>
+													<button class="btn btn-danger" type="button">
+														<i class="fa fa-trash-o"></i> 删除
+													</button>
+													<button class="btn btn-success" type="button">
+														<i class="fa fa-eye"></i> 详情
+													</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+
+			</div>
+			<!--body wrapper end-->
 
         <!--footer section start-->
-        <footer class="sticky-footer" th:include="footer :: copy">
-        </footer>
+       	<div th:include="footer :: copy"></div>
         <!--footer section end-->
     </div>
     <!-- main content end-->

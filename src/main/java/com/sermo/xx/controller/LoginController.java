@@ -25,7 +25,7 @@ public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
+	@RequestMapping(value={"/login","/"}, method=RequestMethod.GET)
 	public String toLogin(ModelMap map) {
 		return "login/login";
 	}
@@ -43,7 +43,7 @@ public class LoginController {
 		if (flag) {
 			session.setAttribute(Globals.USER_SESSION, email);
 			logger.debug("{} login success", email);
-			return "index";
+			return "redirect:/home";
 		}else {
 			logger.debug("{} login fail", email);
 			return "login/login";
