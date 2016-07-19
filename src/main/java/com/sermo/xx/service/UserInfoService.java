@@ -3,6 +3,7 @@ package com.sermo.xx.service;
 import java.util.List;
 
 import com.sermo.xx.model.UserInfo;
+import com.sermo.xx.vo.UserInfoVo;
 
 /**
  * @author sermo
@@ -16,7 +17,7 @@ public interface UserInfoService {
 	 * @param info
 	 * @return
 	 */
-	boolean login(String email, String password);
+	UserInfoVo login(String email, String password);
 	
 	/**
 	 * 注册

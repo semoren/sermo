@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import com.sermo.components.biz.util.Generator;
+import com.sermo.xx.vo.UserInfoVo;
 
 /**
  * 用户信息表
@@ -87,5 +88,12 @@ public class UserInfo implements Serializable{
 
     public void setState(Integer state) {
         this.state = state;
+    }
+    
+    public UserInfoVo copy() {
+    	UserInfoVo vo = new UserInfoVo();
+    	vo.setEmail(this.email);
+    	vo.setName(this.name);
+    	return vo;
     }
 }

@@ -10,6 +10,7 @@ import com.sermo.components.biz.util.MD5Util;
 import com.sermo.xx.dao.UserInfoDao;
 import com.sermo.xx.model.UserInfo;
 import com.sermo.xx.service.UserInfoService;
+import com.sermo.xx.vo.UserInfoVo;
 
 /**
  * @author sermo
@@ -22,10 +23,14 @@ public class UserInfoServiceImpl implements UserInfoService{
 	private @Resource UserInfoDao dao;
 	
 	@Override
-	public boolean login(String email, String pwd) {
+	public UserInfoVo login(String email, String pwd) {
 		UserInfo userInfo = dao.getUser(email);
 		String password = MD5Util.encrypt(pwd);
-		return password.equals(userInfo.getPassword()) ? true : false;
+		if (password.equals(userInfo.getPassword())) {
+			return userInfo.copy();
+		} else {
+			return null;
+		}
 	}
 
 	@Override

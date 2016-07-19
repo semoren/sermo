@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sermo.xx.constant.Globals;
 import com.sermo.xx.model.UserInfo;
 import com.sermo.xx.service.UserInfoService;
+import com.sermo.xx.vo.UserInfoVo;
 
 /**
  * @author sermo
@@ -39,9 +40,9 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(String email, String password, HttpSession session) {
-		boolean flag = service.login(email, password);
-		if (flag) {
-			session.setAttribute(Globals.USER_SESSION, email);
+		UserInfoVo infoVo = service.login(email, password);
+		if (infoVo != null) {
+			session.setAttribute(Globals.USER_SESSION, infoVo);
 			logger.debug("{} login success", email);
 			return "redirect:/home";
 		}else {
